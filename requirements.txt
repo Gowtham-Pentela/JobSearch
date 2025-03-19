@@ -3,4 +3,4 @@ selenium
 webdriver-manager
 beautifulsoup4
 schedule
-
+gunicorn
