@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input, button { padding: 10px; margin: 10px; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        a { text-decoration: none; color: blue; }
+    </style>
+</head>
+<body>
+    <h2>Search LinkedIn Jobs (Last 24 Hours)</h2>
+    <form method="POST">
+        <input type="text" name="keyword" placeholder="Enter Job Keyword" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if jobs %}
+        <h3>Job Results:</h3>
+        <table>
+            <tr>
+                <th>Company Name</th>
+                <th>Location</th>
+                <th>Apply Link</th>
+            </tr>
+            {% for job in jobs %}
+            <tr>
+                <td>{{ job.company }}</td>
+                <td>{{ job.location }}</td>
+                <td><a href="{{ job.link }}" target="_blank">Apply Here</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No job results found. Try a different keyword.</p>
+    {% endif %}
+</body>
+</html>
